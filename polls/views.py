@@ -7,4 +7,4 @@ class QuizzListAPIView(generics.ListAPIView):
     serializer_class = serializers.QuizzSerializer
 
     def get_queryset(self):
-        return models.Quizz.objects.filter(finish_date__lt=timezone.now())
+        return models.Quizz.objects.filter(finish_date__gt=timezone.now())
