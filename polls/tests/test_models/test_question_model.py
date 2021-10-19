@@ -1,12 +1,12 @@
 from django.test import TestCase
 
-from polls.models import Question
+from polls.models import Quiz
 from django.db import models
 
 
-class TestQuestionModelFields(TestCase):
+class TestQuizModelFields(TestCase):
     def get_field(self, field_name: str) -> models.Field:
-        return Question._meta.get_field(field_name)
+        return Quiz._meta.get_field(field_name)
 
     def test_field_title(self):
         field = self.get_field("title")
@@ -31,12 +31,12 @@ class TestQuestionModelFields(TestCase):
         self.assertIsInstance(field, models.TextField)
 
 
-class TestQuestionModelMethods(TestCase):
+class TestQuizModelMethods(TestCase):
     def setUp(self) -> None:
-        self.instance = Question.objects.create(
+        self.instance = Quiz.objects.create(
             title="My title",
             start_date="2003-11-22 01:01:58",
-            description="My question description"
+            description="My quiz description"
         )
 
     def test_str(self):
