@@ -4,7 +4,7 @@ from polls.admin import QuizzAdmin
 from polls.admin import QuestionInline
 
 
-class TestQuizAdmin(TestCase):
+class TestQuizzAdmin(TestCase):
     def setUp(self) -> None:
         self.admin_class = QuizzAdmin
 
