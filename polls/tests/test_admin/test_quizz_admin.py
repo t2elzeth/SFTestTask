@@ -1,7 +1,6 @@
 from django.test import TestCase
 
-from polls.admin import QuizzAdmin
-from polls.admin import QuestionInline
+from polls.admin import QuizzAdmin, QuestionInline
 
 
 class TestQuizzAdmin(TestCase):
