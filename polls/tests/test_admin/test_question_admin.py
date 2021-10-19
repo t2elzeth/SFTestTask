@@ -8,4 +8,4 @@ class TestQuestionAdmin(TestCase):
         self.admin_class = QuestionAdmin
 
     def test_inlines(self):
-        self.assertEqual(self.admin_class.inlines, (QuestionChoiceInline, ))
+        self.assertEqual(self.admin_class.inlines, (QuestionChoiceInline,))
