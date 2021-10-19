@@ -17,6 +17,7 @@ class Quiz(models.Model):
 
 
 class Question(models.Model):
+    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     content = models.CharField(max_length=255)
 
     QUESTION_TYPE_TEXT = "text"
