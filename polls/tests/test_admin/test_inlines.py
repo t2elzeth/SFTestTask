@@ -27,6 +27,3 @@ class TestQuestionChoiceInline(TestCase):
 
     def test_field_extra(self):
         self.assertEqual(self.inline_class.extra, 0)
-
-    def test_field_show_change_link(self):
-        self.assertTrue(self.inline_class.show_change_link)

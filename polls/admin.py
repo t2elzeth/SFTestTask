@@ -11,13 +11,12 @@ class QuestionInline(admin.StackedInline):
 class QuestionChoiceInline(admin.TabularInline):
     model = models.QuestionChoice
     extra = 0
-    show_change_link = True
 
 
 @admin.register(models.Question)
 class QuestionAdmin(admin.ModelAdmin):
     inlines = (
-        QuestionChoiceInline, 
+        QuestionChoiceInline,
     )
 
 
