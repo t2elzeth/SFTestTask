@@ -44,3 +44,12 @@ class QuestionChoice(models.Model):
 
     def __str__(self):
         return self.content
+
+
+class Answer(models.Model):
+    user_id = models.CharField(max_length=255)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    choices = models.ManyToManyField(QuestionChoice)
+
+    def __str__(self):
+        return
