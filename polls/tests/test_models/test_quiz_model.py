@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from polls.models import Quiz
+from polls.models import Quizz
 from django.db import models
 from django.utils import timezone
 from datetime import timedelta
@@ -8,7 +8,7 @@ from datetime import timedelta
 
 class TestQuizModelFields(TestCase):
     def get_field(self, field_name: str) -> models.Field:
-        return Quiz._meta.get_field(field_name)
+        return Quizz._meta.get_field(field_name)
 
     def test_field_title(self):
         field = self.get_field("title")
@@ -35,7 +35,7 @@ class TestQuizModelFields(TestCase):
 
 class TestQuizModelMethods(TestCase):
     def setUp(self) -> None:
-        self.instance = Quiz.objects.create(
+        self.instance = Quizz.objects.create(
             title="My title",
             finish_date=timezone.now() - timedelta(days=2),
             description="My quiz description"
@@ -51,3 +51,14 @@ class TestQuizModelMethods(TestCase):
         self.instance.finish_date = timezone.now() + timedelta(days=2)
         self.instance.save()
         self.assertTrue(self.instance.is_active)
+
+
+class TestQuizModelMeta(TestCase):
+    def setUp(self) -> None:
+        self.meta = Quizz._meta
+
+    def test_verbose_name(self):
+        self.assertEqual(self.meta.verbose_name, "Quizz")
+
+    def test_verbose_name_plural(self):
+        self.assertEqual(self.meta.verbose_name_plural, "Quizzes")

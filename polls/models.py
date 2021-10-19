@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 
 
-class Quiz(models.Model):
+class Quizz(models.Model):
     title = models.CharField(max_length=255)
     start_date = models.DateTimeField(auto_now_add=True)
     finish_date = models.DateTimeField()
@@ -15,9 +15,13 @@ class Quiz(models.Model):
     def is_active(self) -> bool:
         return timezone.now() < self.finish_date
 
+    class Meta:
+        verbose_name = "Quizz"
+        verbose_name_plural = "Quizzes"
+
 
 class Question(models.Model):
-    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
+    quiz = models.ForeignKey(Quizz, on_delete=models.CASCADE)
     content = models.CharField(max_length=255)
 
     QUESTION_TYPE_TEXT = "text"

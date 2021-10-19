@@ -8,7 +8,7 @@ class QuestionInline(admin.StackedInline):
     show_change_link = True
 
 
-@admin.register(models.Quiz)
+@admin.register(models.Quizz)
 class QuizAdmin(admin.ModelAdmin):
     inlines = (
         QuestionInline,

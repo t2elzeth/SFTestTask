@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.db import models
 
-from polls.models import Question, Quiz
+from polls.models import Question, Quizz
 from polls.tests.factory import QuestionFactory
 
 
@@ -17,7 +17,7 @@ class TestQuestionModelFields(TestCase):
         field = self.get_field(field_name)
 
         self.assertIsInstance(field, models.ForeignKey)
-        self.assertEqual(field.remote_field.model, Quiz)
+        self.assertEqual(field.remote_field.model, Quizz)
         self.assertEqual(field.remote_field.on_delete, models.CASCADE)
 
     def test_field_content(self):
