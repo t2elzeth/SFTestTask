@@ -9,12 +9,6 @@ class QuestionInline(admin.StackedInline):
     show_change_link = True
 
 
-class QuizzAdminForm(forms.ModelForm):
-    class Meta:
-        model = models.Quizz
-        fields = ("title", "finish_date", "description")
-
-
 @admin.register(models.Quizz)
 class QuizzAdmin(admin.ModelAdmin):
     inlines = (
