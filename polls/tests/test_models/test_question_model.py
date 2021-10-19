@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.db import models
 
 from polls.models import Question
+from polls.tests.factory import QuestionFactory
 
 
 class TestQuestionModelFields(TestCase):
@@ -40,11 +41,8 @@ class TestQuestionModelFields(TestCase):
 
 class TestQuestionModelMethods(TestCase):
     def setUp(self) -> None:
-        self.instance = Question.objects.create(
-            content="My question content",
-            question_type="text"
-        )
+        self.instance: Question = QuestionFactory.create()
 
     def test_string_representation(self):
         string_representation = str(self.instance)
-        self.assertEqual(string_representation, "My question content")
+        self.assertEqual(string_representation, self.instance.content)
