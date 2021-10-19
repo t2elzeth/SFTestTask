@@ -51,10 +51,6 @@ class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     choices = models.ManyToManyField(QuestionChoice)
 
-    def clean(self):
-        print([choice.id for choice in self.choices.all()])
-        return super().clean()
-
     def __str__(self):
         # TODO: Test string representation
         return f"{self.user_id}"
