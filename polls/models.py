@@ -39,7 +39,7 @@ class Question(models.Model):
 
 
 class QuestionChoice(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name="choices")
     content = models.CharField(max_length=255)
 
     def __str__(self):
@@ -51,5 +51,10 @@ class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     choices = models.ManyToManyField(QuestionChoice)
 
+    def clean(self):
+        print([choice.id for choice in self.choices.all()])
+        return super().clean()
+
     def __str__(self):
-        return
+        # TODO: Test string representation
+        return f"{self.user_id}"

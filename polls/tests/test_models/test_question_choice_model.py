@@ -18,6 +18,7 @@ class TestQuestionChoiceModelFields(TestCase):
         self.assertIsInstance(field, models.ForeignKey)
         self.assertEqual(field.remote_field.model, Question)
         self.assertEqual(field.remote_field.on_delete, models.CASCADE)
+        self.assertEqual(field.remote_field.related_name, "choices")
 
     def test_content_field(self):
         field_name = "content"
