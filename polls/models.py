@@ -29,3 +29,11 @@ class Question(models.Model):
 
     def __str__(self):
         return self.content
+
+
+class QuestionChoice(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    content = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.content
