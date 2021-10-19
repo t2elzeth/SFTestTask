@@ -39,3 +39,8 @@ class QuizzAdmin(admin.ModelAdmin):
         "start_date",
         "is_active"
     )
+
+
+@admin.register(models.Answer)
+class AnswerAdmin(admin.ModelAdmin):
+    pass
