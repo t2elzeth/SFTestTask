@@ -13,6 +13,8 @@ class Quizz(models.Model):
 
     @property
     def is_active(self) -> bool:
+        if self.id is None:
+            return False
         return timezone.now() < self.finish_date
 
     class Meta:

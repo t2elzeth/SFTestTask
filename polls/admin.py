@@ -1,5 +1,6 @@
 from django.contrib import admin
 from . import models
+from django import forms
 
 
 class QuestionInline(admin.StackedInline):
@@ -8,8 +9,14 @@ class QuestionInline(admin.StackedInline):
     show_change_link = True
 
 
+class QuizzAdminForm(forms.ModelForm):
+    class Meta:
+        model = models.Quizz
+        fields = ("title", "finish_date", "description")
+
+
 @admin.register(models.Quizz)
-class QuizAdmin(admin.ModelAdmin):
+class QuizzAdmin(admin.ModelAdmin):
     inlines = (
         QuestionInline,
     )
@@ -27,4 +34,3 @@ class QuizAdmin(admin.ModelAdmin):
         "start_date",
         "is_active"
     )
-
