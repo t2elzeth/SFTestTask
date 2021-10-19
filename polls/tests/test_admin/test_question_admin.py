@@ -1,12 +1,12 @@
 from django.test import TestCase
 
-from polls.admin import QuizAdmin
+from polls.admin import QuizzAdmin
 from polls.admin import QuestionInline
 
 
 class TestQuizAdmin(TestCase):
     def setUp(self) -> None:
-        self.admin_class = QuizAdmin
+        self.admin_class = QuizzAdmin
 
     def test_inlines(self):
         self.assertIsInstance(self.admin_class.inlines, tuple)

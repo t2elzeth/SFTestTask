@@ -8,7 +8,7 @@ import faker
 
 class TestInitAdminCommandDefaultUsernames(TestCase):
     def get_default(self, username_field: str) -> str:
-        return initadmin.USER_DEFAULT_USERNAMES[username_field]
+        return initadmin.Command.DEFAULT_USERNAMES[username_field]
 
     def test_default_email_username(self):
         username_field = "email"

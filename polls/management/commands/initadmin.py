@@ -5,19 +5,19 @@ from django.core.management.base import BaseCommand
 
 User = get_user_model()
 
-USER_DEFAULT_USERNAMES = {
-    "email": "admin@gmail.com",
-    "username": "admin",
-    "phone": "996312312312",
-}
-
 
 class Command(BaseCommand):
     USERNAME_ENV_VAR = "DJANGO_ADMIN_USERNAME"
     PASSWORD_ENV_VAR = "DJANGO_ADMIN_PASSWORD"
 
+    DEFAULT_USERNAMES = {
+        "email": "admin@gmail.com",
+        "username": "admin",
+        "phone": "996312312312",
+    }
+
     def get_default_username(self) -> str:
-        default_username = USER_DEFAULT_USERNAMES.get(User.USERNAME_FIELD)
+        default_username = self.DEFAULT_USERNAMES.get(User.USERNAME_FIELD)
         if default_username is None:
             raise ValueError("Unsupported User.USERNAME_FIELD")
         return default_username
